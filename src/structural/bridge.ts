@@ -1,4 +1,4 @@
-interface DeviceProtocol {
+export interface DeviceProtocol {
   setVolume(volume: number): void;
   getVolume(): number;
 }

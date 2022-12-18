@@ -1,8 +1,8 @@
-interface ButtonProtocol {
+export interface ButtonProtocol {
   text: string;
 }
 
-class WindowsButton implements ButtonProtocol {
+export class WindowsButton implements ButtonProtocol {
   public text: string;
 
   constructor(text: string) {
@@ -10,7 +10,7 @@ class WindowsButton implements ButtonProtocol {
   }
 }
 
-class LinuxButton implements ButtonProtocol {
+export class LinuxButton implements ButtonProtocol {
   public text: string;
 
   constructor(text: string) {
@@ -18,18 +18,18 @@ class LinuxButton implements ButtonProtocol {
   }
 }
 
-interface InputProtocol {
+export interface InputProtocol {
   label: string;
 }
 
-class WindowsInput implements InputProtocol {
+export class WindowsInput implements InputProtocol {
   label: string;
   constructor(label: string) {
     this.label = `${label} WINDOWS`;
   }
 }
 
-class LinuxInput implements InputProtocol {
+export class LinuxInput implements InputProtocol {
   label: string;
   constructor(label: string) {
     this.label = `${label} LINUX`;
@@ -37,12 +37,12 @@ class LinuxInput implements InputProtocol {
 }
 
 /* --- ABSTRACT FACTORY --- */
-interface UIFactoryProtocol {
+export interface UIFactoryProtocol {
   createButton(text: string): ButtonProtocol;
   createInput(label: string): InputProtocol;
 }
 
-class WindowsFactory implements UIFactoryProtocol {
+export class WindowsFactory implements UIFactoryProtocol {
   createButton(text: string): ButtonProtocol {
     return new WindowsButton(text);
   }
@@ -51,7 +51,7 @@ class WindowsFactory implements UIFactoryProtocol {
   }
 }
 
-class LinuxFactory implements UIFactoryProtocol {
+export class LinuxFactory implements UIFactoryProtocol {
   createButton(text: string): ButtonProtocol {
     return new LinuxButton(text);
   }

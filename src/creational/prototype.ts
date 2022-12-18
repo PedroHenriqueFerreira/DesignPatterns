@@ -1,4 +1,4 @@
-interface PrototypeProtocol {
+export interface PrototypeProtocol {
   clone(): PrototypeProtocol;
 }
 

@@ -1,4 +1,4 @@
-interface ProductProtocol {
+export interface ProductProtocol {
   name: string;
   price: number;
 }
@@ -9,7 +9,7 @@ class Product implements ProductProtocol {
 
 /* --- FACTORY --- */
 
-interface ProductFactoryProtocol {
+export interface ProductFactoryProtocol {
   getProduct(name: string, price: number): ProductProtocol;
 }
 

@@ -1,11 +1,11 @@
 import isEmail from 'validator/lib/isEmail';
 
 /* --- ADAPTER --- */
-interface ValidatorProtocol {
+export interface ValidatorProtocol {
   checkEmail(value: string): boolean;
 }
 
-class ValidatorAdapter implements ValidatorProtocol {
+export class ValidatorAdapter implements ValidatorProtocol {
   checkEmail(value: string): boolean {
     return isEmail(value);
   }

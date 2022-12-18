@@ -1,9 +1,9 @@
-interface ItemProtocol {
+export interface ItemProtocol {
   name: string;
   price: number;
 }
 
-interface BoxProtocol {
+export interface BoxProtocol {
   items: ItemProtocol[];
   addItem(item: ItemProtocol): this;
 }
@@ -20,7 +20,7 @@ class Box implements BoxProtocol {
 
 /* --- BUILDER --- */
 
-interface BuilderProtocol {
+export interface BuilderProtocol {
   makeToyBox(): this;
   makeFoodBox(): this;
   reset(): void;
