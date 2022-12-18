@@ -21,24 +21,14 @@ class Box implements BoxProtocol {
 /* --- BUILDER --- */
 
 export interface BuilderProtocol {
-  makeToyBox(): this;
-  makeFoodBox(): this;
-  reset(): void;
+  makeBox(): this;
   getBox(): Box;
 }
 
-class BoxBuilder implements BuilderProtocol {
+class FoodBoxBuilder implements BuilderProtocol {
   private _box: BoxProtocol = new Box();
 
-  makeToyBox(): this {
-    this._box
-      .addItem({ name: 'Car', price: 25 })
-      .addItem({ name: 'Doll', price: 12 });
-
-    return this;
-  }
-
-  makeFoodBox(): this {
+  makeBox(): this {
     this._box
       .addItem({ name: 'Hamburger', price: 20 })
       .addItem({ name: 'Pizza', price: 35 });
@@ -46,8 +36,20 @@ class BoxBuilder implements BuilderProtocol {
     return this;
   }
 
-  reset(): void {
-    this._box = new Box();
+  getBox() {
+    return this._box;
+  }
+}
+
+class ToyBoxBuilder implements BuilderProtocol {
+  private _box: BoxProtocol = new Box();
+
+  makeBox(): this {
+    this._box
+      .addItem({ name: 'Car', price: 25 })
+      .addItem({ name: 'Doll', price: 12 });
+
+    return this;
   }
 
   getBox() {
@@ -57,12 +59,12 @@ class BoxBuilder implements BuilderProtocol {
 
 /* --- CLIENT CODE --- */
 
-const builder = new BoxBuilder();
+const toyBoxBuilder = new ToyBoxBuilder();
 
-builder.makeFoodBox();
-console.log(builder.getBox());
+toyBoxBuilder.makeBox();
+console.log(toyBoxBuilder.getBox());
 
-builder.reset();
+const foodBoxBuilder = new FoodBoxBuilder();
 
-builder.makeToyBox();
-console.log(builder.getBox());
+foodBoxBuilder.makeBox();
+console.log(foodBoxBuilder.getBox());
