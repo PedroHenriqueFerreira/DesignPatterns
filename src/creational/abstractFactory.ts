@@ -37,7 +37,6 @@ class LinuxInput implements InputProtocol {
 }
 
 /* --- ABSTRACT FACTORY --- */
-
 interface UIFactoryProtocol {
   createButton(text: string): ButtonProtocol;
   createInput(label: string): InputProtocol;
@@ -62,7 +61,6 @@ class LinuxFactory implements UIFactoryProtocol {
 }
 
 /* --- CLIENT CODE --- */
-
 const windowsFactory = new WindowsFactory();
 const linuxFactory = new LinuxFactory();
 

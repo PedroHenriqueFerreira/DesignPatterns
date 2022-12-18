@@ -1,4 +1,4 @@
-export class Connection {
+class Connection {
   private static _instance: Connection | null = null;
 
   // eslint-disable-next-line @typescript-eslint/no-empty-function
