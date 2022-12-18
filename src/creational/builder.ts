@@ -32,8 +32,8 @@ class BoxBuilder implements BuilderProtocol {
 
   makeToyBox(): this {
     this._box
-      .addItem({ name: 'Carrinho', price: 25 })
-      .addItem({ name: 'Boneca', price: 12 });
+      .addItem({ name: 'Car', price: 25 })
+      .addItem({ name: 'Doll', price: 12 });
 
     return this;
   }
