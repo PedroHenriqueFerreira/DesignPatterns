@@ -1,0 +1,26 @@
+interface ProductProtocol {
+  name: string;
+  price: number;
+}
+
+class Product implements ProductProtocol {
+  constructor(public name: string, public price: number) {}
+}
+
+/* --- FACTORY --- */
+
+interface ProductFactoryProtocol {
+  getProduct(name: string, price: number): ProductProtocol;
+}
+
+class ProductFactory implements ProductFactoryProtocol {
+  getProduct(name: string, price: number): ProductProtocol {
+    return new Product(name, price);
+  }
+}
+
+/* --- CLIENT CODE --- */
+
+const productFactory = new ProductFactory();
+const product = productFactory.getProduct('Carrinho', 20);
+console.log(product);
