@@ -22,6 +22,7 @@ export class User implements UserProtocol {
   }
 }
 
+/* --- PROXY --- */
 export class UserProxy implements UserProtocol {
   private realUser: UserProtocol | null = null;
   private realUserAddresses: AddressProtocol[] | null = null;

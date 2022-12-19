@@ -1,5 +1,6 @@
 import { ToyBoxBuilder, FoodBoxBuilder } from '../creational/builder';
 
+/* --- FACADE --- */
 export class BoxFacade {
   private toyBoxBuilder: ToyBoxBuilder = new ToyBoxBuilder();
   private foodBoxBuilder: FoodBoxBuilder = new FoodBoxBuilder();
