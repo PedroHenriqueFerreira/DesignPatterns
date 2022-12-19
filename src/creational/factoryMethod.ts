@@ -3,7 +3,7 @@ export interface ProductProtocol {
   price: number;
 }
 
-class Product implements ProductProtocol {
+export class Product implements ProductProtocol {
   constructor(public name: string, public price: number) {}
 }
 
@@ -13,7 +13,7 @@ export interface ProductFactoryProtocol {
   getProduct(name: string, price: number): ProductProtocol;
 }
 
-class ProductFactory implements ProductFactoryProtocol {
+export class ProductFactory implements ProductFactoryProtocol {
   getProduct(name: string, price: number): ProductProtocol {
     return new Product(name, price);
   }

@@ -2,7 +2,7 @@ export interface PrototypeProtocol {
   clone(): PrototypeProtocol;
 }
 
-class PersonDeepCopy implements PrototypeProtocol {
+export class PersonDeepCopy implements PrototypeProtocol {
   constructor(public name: string, public age: number) {}
 
   clone(): PrototypeProtocol {
@@ -10,7 +10,7 @@ class PersonDeepCopy implements PrototypeProtocol {
   }
 }
 
-class PersonShallowCopy implements PrototypeProtocol {
+export class PersonShallowCopy implements PrototypeProtocol {
   constructor(public name: string, public age: number) {}
 
   clone(): this {

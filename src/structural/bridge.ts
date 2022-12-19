@@ -3,7 +3,7 @@ export interface DeviceProtocol {
   getVolume(): number;
 }
 
-class Device implements DeviceProtocol {
+export class Device implements DeviceProtocol {
   private _volume = 0;
 
   setVolume(volume: number): void {
@@ -16,7 +16,7 @@ class Device implements DeviceProtocol {
 }
 
 /* --- BRIDGE --- */
-class RemoteControl {
+export class RemoteControl {
   constructor(private device: DeviceProtocol) {}
 
   volumeUp(): void {

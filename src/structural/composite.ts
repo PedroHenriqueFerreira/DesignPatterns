@@ -9,7 +9,7 @@ abstract class ProductAbstract {
   remove(product: ProductAbstract): void {}
 }
 
-class ProductLeaf extends ProductAbstract {
+export class ProductLeaf extends ProductAbstract {
   constructor(public name: string, private price: number) {
     super();
   }
@@ -20,7 +20,7 @@ class ProductLeaf extends ProductAbstract {
 }
 
 /* --- COMPOSITE --- */
-class ProductComposite extends ProductAbstract {
+export class ProductComposite extends ProductAbstract {
   private children: ProductAbstract[] = [];
 
   add(...products: ProductAbstract[]): void {

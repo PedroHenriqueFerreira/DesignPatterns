@@ -8,7 +8,7 @@ export interface BoxProtocol {
   addItem(item: ItemProtocol): this;
 }
 
-class Box implements BoxProtocol {
+export class Box implements BoxProtocol {
   items: ItemProtocol[] = [];
 
   addItem(item: ItemProtocol): this {
@@ -25,7 +25,7 @@ export interface BuilderProtocol {
   getBox(): Box;
 }
 
-class FoodBoxBuilder implements BuilderProtocol {
+export class FoodBoxBuilder implements BuilderProtocol {
   private _box: BoxProtocol = new Box();
 
   makeBox(): this {
@@ -41,7 +41,7 @@ class FoodBoxBuilder implements BuilderProtocol {
   }
 }
 
-class ToyBoxBuilder implements BuilderProtocol {
+export class ToyBoxBuilder implements BuilderProtocol {
   private _box: BoxProtocol = new Box();
 
   makeBox(): this {
@@ -57,14 +57,16 @@ class ToyBoxBuilder implements BuilderProtocol {
   }
 }
 
-/* --- CLIENT CODE --- */
+if (require.main === module) {
+  /* --- CLIENT CODE --- */
 
-const toyBoxBuilder = new ToyBoxBuilder();
+  const toyBoxBuilder = new ToyBoxBuilder();
 
-toyBoxBuilder.makeBox();
-console.log(toyBoxBuilder.getBox());
+  toyBoxBuilder.makeBox();
+  console.log(toyBoxBuilder.getBox());
 
-const foodBoxBuilder = new FoodBoxBuilder();
+  const foodBoxBuilder = new FoodBoxBuilder();
 
-foodBoxBuilder.makeBox();
-console.log(foodBoxBuilder.getBox());
+  foodBoxBuilder.makeBox();
+  console.log(foodBoxBuilder.getBox());
+}
