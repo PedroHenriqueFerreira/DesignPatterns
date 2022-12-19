@@ -12,31 +12,6 @@ export class DiscountStrategy {
   }
 }
 
-export class ShoppingCart {
-  private products: ProductProtocol[] = [];
-  private _discountStrategy: DiscountStrategy = new DiscountStrategy();
-
-  addProduct(...products: ProductProtocol[]): void {
-    products.forEach((product) => this.products.push(product));
-  }
-
-  getProducts(): ProductProtocol[] {
-    return this.products;
-  }
-
-  getTotal(): number {
-    return this.products.reduce((sum, product) => sum + product.price, 0);
-  }
-
-  getTotalWithDiscount(): number {
-    return this._discountStrategy.getDiscount(this);
-  }
-
-  set discount(discount: DiscountStrategy) {
-    this._discountStrategy = discount;
-  }
-}
-
 export class NewDiscount extends DiscountStrategy {
   protected discount = 0;
 
@@ -69,10 +44,30 @@ export class DefaultDiscount extends DiscountStrategy {
   }
 }
 
+export class ShoppingCart {
+  private products: ProductProtocol[] = [];
+
+  constructor(private _discountStrategy: DiscountStrategy) {}
+
+  addProduct(...products: ProductProtocol[]): void {
+    products.forEach((product) => this.products.push(product));
+  }
+
+  getProducts(): ProductProtocol[] {
+    return this.products;
+  }
+
+  getTotal(): number {
+    return this.products.reduce((sum, product) => sum + product.price, 0);
+  }
+
+  getTotalWithDiscount(): number {
+    return this._discountStrategy.getDiscount(this);
+  }
+}
+
 /* --- CLIENT CODE --- */
-const shoppingCart = new ShoppingCart();
-shoppingCart.discount = new DefaultDiscount();
-shoppingCart.discount = new NewDiscount();
+const shoppingCart = new ShoppingCart(new DefaultDiscount());
 shoppingCart.addProduct({ name: 'Produto 1', price: 50 });
 shoppingCart.addProduct({ name: 'Produto 2', price: 50 });
 shoppingCart.addProduct({ name: 'Produto 2', price: 50 });
