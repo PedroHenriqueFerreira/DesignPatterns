@@ -68,8 +68,8 @@ export class ShoppingCart {
 
 /* --- CLIENT CODE --- */
 const shoppingCart = new ShoppingCart(new DefaultDiscount());
-shoppingCart.addProduct({ name: 'Produto 1', price: 50 });
-shoppingCart.addProduct({ name: 'Produto 2', price: 50 });
-shoppingCart.addProduct({ name: 'Produto 2', price: 50 });
+shoppingCart.addProduct({ name: 'Product 1', price: 50 });
+shoppingCart.addProduct({ name: 'Product 2', price: 50 });
+shoppingCart.addProduct({ name: 'Product 3', price: 50 });
 console.log(shoppingCart.getTotal());
 console.log(shoppingCart.getTotalWithDiscount());

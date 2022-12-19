@@ -1,4 +1,4 @@
-export class SmartHouseLight {
+export class SmartHouse {
   private isOn = false;
   private intensity = 50;
 
@@ -10,13 +10,13 @@ export class SmartHouseLight {
 
   on(): boolean {
     this.isOn = true;
-    console.log(`${this.name} agora está ${this.getPowerStatus()}`);
+    console.log(`${this.name} is ${this.getPowerStatus()}`);
     return this.isOn;
   }
 
   off(): boolean {
     this.isOn = false;
-    console.log(`${this.name} agora está ${this.getPowerStatus()}`);
+    console.log(`${this.name} is ${this.getPowerStatus()}`);
     return this.isOn;
   }
 
@@ -40,7 +40,7 @@ export interface CommandProtocol {
 }
 
 export class LightPowerCommand implements CommandProtocol {
-  constructor(private readonly light: SmartHouseLight) {}
+  constructor(private readonly light: SmartHouse) {}
 
   execute(): void {
     this.light.on();
@@ -52,16 +52,16 @@ export class LightPowerCommand implements CommandProtocol {
 }
 
 export class LightIntensityCommand implements CommandProtocol {
-  constructor(private readonly light: SmartHouseLight) {}
+  constructor(private readonly light: SmartHouse) {}
 
   execute(): void {
     const intensity = this.light.increaseIntensity();
-    console.log(`Intensidade de ${this.light.name} é ${intensity}`);
+    console.log(`The light power of ${this.light.name} is ${intensity}`);
   }
 
   undo(): void {
     const intensity = this.light.decreaseIntensity();
-    console.log(`Intensidade de ${this.light.name} é ${intensity}`);
+    console.log(`The light power of ${this.light.name} is ${intensity}`);
   }
 }
 
@@ -84,8 +84,8 @@ export class SmartHouseApp {
 /* --- CLIENT CODE --- */
 
 // Receiver
-const bedroomLight = new SmartHouseLight('Luz Quarto');
-const bathroomLight = new SmartHouseLight('Luz Banheiro');
+const bedroomLight = new SmartHouse('Bedroom Light');
+const bathroomLight = new SmartHouse('Bathroom Light');
 
 // Invoker
 const smartHouseApp = new SmartHouseApp();
