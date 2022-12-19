@@ -13,4 +13,4 @@ export class ValidatorAdapter implements ValidatorProtocol {
 
 /* --- CLIENT CODE --- */
 const validatorAdapter = new ValidatorAdapter();
-console.log(validatorAdapter.checkEmail('pedro@gmail.com'));
+console.log(validatorAdapter.checkEmail('Pedro@gmail.com'));
