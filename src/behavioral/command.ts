@@ -65,6 +65,7 @@ export class LightIntensityCommand implements CommandProtocol {
   }
 }
 
+/* --- INVOKER --- */
 export class SmartHouseApp {
   private commands: { [k: string]: CommandProtocol } = {};
 
