@@ -4,6 +4,7 @@ interface Observable {
   notify(): void;
 }
 
+/* --- OBSERVER --- */
 interface Observer {
   update(...args: unknown[]): void;
 }
