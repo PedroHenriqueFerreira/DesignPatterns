@@ -4,6 +4,7 @@ export interface OrderState {
   wait(): void;
   approve(): void;
   refuse(): void;
+  send(): void;
 }
 
 export class WaitState implements OrderState {
@@ -25,6 +26,10 @@ export class WaitState implements OrderState {
 
   refuse() {
     this.state.setState(new RefuseState(this.state));
+  }
+
+  send() {
+    console.log("Can't send when waiting");
   }
 }
 
@@ -48,6 +53,10 @@ export class ApproveState implements OrderState {
   refuse() {
     this.state.setState(new RefuseState(this.state));
   }
+
+  send() {
+    console.log('Sending...');
+  }
 }
 
 export class RefuseState implements OrderState {
@@ -69,6 +78,10 @@ export class RefuseState implements OrderState {
 
   refuse() {
     console.log('Already refused');
+  }
+
+  send() {
+    console.log("Can't send refused");
   }
 }
 
@@ -96,13 +109,20 @@ export class ShoppingOrder {
   refuse() {
     this.state.refuse();
   }
+
+  send() {
+    this.state.send();
+  }
 }
 
 /* --- CLIENT CODE --- */
-const order = new ShoppingOrder(); // Pendente
-order.approve(); // Aprovado
-order.wait(); // Pendente
-order.refuse(); // Daqui não altera mais o estado
-order.approve(); // n
-order.wait(); // n
-order.approve(); // n
+const order = new ShoppingOrder();
+order.approve();
+order.send();
+order.wait();
+order.send();
+order.refuse();
+order.send();
+order.approve();
+order.wait();
+order.approve();
