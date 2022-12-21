@@ -4,7 +4,7 @@ export interface IteratorProtocol<T> extends Iterator<T> {
 }
 
 export class MyIterator implements IteratorProtocol<string> {
-  constructor(private dataStructure: DataStructure) {}
+  constructor(private dataStructure: Collection) {}
 
   private index = 0;
 
@@ -24,7 +24,7 @@ export class MyIterator implements IteratorProtocol<string> {
   }
 }
 
-export class DataStructure {
+export class Collection {
   private iterator: IteratorProtocol<string> = new MyIterator(this);
 
   constructor(private _items: string[]) {}
@@ -43,7 +43,7 @@ export class DataStructure {
 }
 
 /* --- CLIENT CODE --- */
-const dataStructure = new DataStructure(['a', 'b', 'c', 'd', 'e', 'f']);
+const dataStructure = new Collection(['a', 'b', 'c', 'd', 'e', 'f']);
 
 console.log(dataStructure);
 
