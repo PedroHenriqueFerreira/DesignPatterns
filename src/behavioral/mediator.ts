@@ -1,6 +1,6 @@
 export type SellerProduct = { id: string; name: string; price: number };
 
-/* --- COLLEAGUE --- */
+/* --- COLLEAGUES --- */
 export class Seller {
   private products: SellerProduct[] = [];
   private mediator?: Mediator;
@@ -70,7 +70,6 @@ export class Mediator {
   }
 }
 
-/* --- COLLEAGUE --- */
 export class Buyer {
   constructor(private mediator: Mediator) {}
 
